@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIP | BMJ_SERVICE</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* BASE IDENTIQUE A INDEX */
+body{
+    font-family:"Times New Roman", Times, serif;
+    background:#f2f5f9;
+    color:#222;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+/* HEADER IDENTIQUE */
+header{
+    background:#0a3d62;
+    color:#fff;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+    position:relative;
+}
+
+.logo-zone{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo-zone img{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.logo-zone span{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.menu{
+    font-size:26px;
+    cursor:pointer;
+}
+
+/* MENU */
+.nav{
+    display:none;
+    position:absolute;
+    top:65px;
+    right:20px;
+    background:#0a3d62;
+    border-radius:8px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    overflow:hidden;
+    z-index:1000;
+}
+
+.nav a{
+    display:block;
+    padding:12px 18px;
+    text-decoration:none;
+    color:#fff;
+    font-size:16px;
+}
+
+.nav a:hover{
+    background:#08304d;
+}
+
+/* CONTENU */
+main{
+    flex:1;
+    width:100%;
+    max-width:900px;
+    margin:60px auto;
+    padding:20px;
+}
+
+/* CONTAINER VIP */
+.vip-container{
+    background:#ffffff;
+    border-radius:10px;
+    padding:40px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.vip-container h2{
+    font-size:32px;
+    margin-bottom:20px;
+    color:#0a3d62;
+}
+
+.vip-container p{
+    font-size:18px;
+    margin-bottom:30px;
+}
+
+/* BOUTONS IDENTIQUES */
+.join-btn{
+    display:inline-block;
+    margin:10px;
+    padding:13px 26px;
+    background:#0a3d62;
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:6px;
+    transition:background 0.3s;
+    font-size:16px;
+}
+
+.join-btn:hover{
+    background:#08304d;
+}
+
+/* FOOTER IDENTIQUE */
+footer{
+    background:#0a3d62;
+    color:#fff;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:15px 20px;
+    font-size:15px;
+}
+
+footer .social{
+    margin-bottom:10px;
+}
+
+footer .social a{
+    margin:0 8px;
+    font-size:20px;
+    color:#fff;
+    text-decoration:none;
+}
+
+footer .social a:hover{
+    color:#dcefff;
+}
+
+footer .footer-text{
+    text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo-zone">
+        <img src="logo.png" alt="Logo BMJ_SERVICE">
+        <span>BMJ_SERVICE</span>
+    </div>
+
+    <div class="menu" id="menuBtn">☰</div>
+
+    <nav class="nav" id="navMenu">
+        <a href="index.html">Accueil</a>
+        <a href="inscription.html">Inscription</a>
+        <a href="connexion.html">Connexion</a>
+        <a href="vip.html">VIP</a>
+    </nav>
+</header>
+
+<main>
+    <div class="vip-container">
+        <h2>Espace VIP</h2>
+
+        <p>
+        Bienvenue dans l’espace VIP de BMJ_SERVICE. 
+        En devenant membre VIP, vous pourrez accéder à des contenus exclusifs, 
+        recevoir un certificat officiel et bénéficier d’avantages réservés.
+        </p>
+
+        <a href="https://yali.state.gov/fr/" target="_blank" class="join-btn">
+            → Leçons
+        </a>
+
+        <a href="paiement.html" class="join-btn">
+            → Suivi VIP en vidéo
+        </a>
+    </div>
+</main>
+
+<footer>
+    <div class="social">
+        <a href="https://wa.me/243993585711"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:Justinmussiwa@gmail.com"><i class="fas fa-envelope"></i></a>
+    </div>
+
+    <div class="footer-text">
+        © 2026 BMJ_SERVICE – Tous droits réservés
+    </div>
+</footer>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const navMenu = document.getElementById("navMenu");
+
+menuBtn.addEventListener("click", function(e){
+    e.stopPropagation();
+    navMenu.style.display = navMenu.style.display === "block" ? "none" : "block";
+});
+
+document.addEventListener("click", function(){
+    navMenu.style.display = "none";
+});
+
+navMenu.addEventListener("click", function(e){
+    e.stopPropagation();
+});
+</script>
+
+</body>
+</html>

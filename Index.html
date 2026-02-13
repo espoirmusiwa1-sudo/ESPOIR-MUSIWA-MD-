@@ -1,0 +1,474 @@
+<!DOCTYPE html>  <html lang="fr">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>BMJ_SERVICE</title>  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* BASE */
+body{
+    font-family:"Times New Roman", Times, serif;
+    background:#f2f5f9;
+    color:#222;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    font-size:17px;
+    line-height:1.7;
+}
+
+/* HEADER */
+header{
+    background:#0a3d62;
+    color:#fff;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+    position:relative;
+}
+
+.logo-zone{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo-zone img{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.logo-zone span{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.menu{
+    font-size:26px;
+    cursor:pointer;
+}
+
+/* MENU */
+.nav{
+    display:none;
+    position:absolute;
+    top:65px;
+    right:20px;
+    background:#0a3d62;
+    border-radius:8px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    overflow:hidden;
+    z-index:1000;
+}
+
+.nav a{
+    display:block;
+    padding:12px 18px;
+    text-decoration:none;
+    color:#fff;
+    background:#0a3d62;
+    font-size:16px;
+}
+
+.nav a:hover{
+    background:#08304d;
+}
+
+/* CONTENU */
+main{
+    flex:1;
+    width:100%;
+    max-width:900px;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+/* SLIDERS */
+.slider,
+.dgda-slider,
+.dgi-slider{
+    position:relative;
+    width:100%;
+    max-width:800px;
+    height:150px;
+    overflow:hidden;
+    border-radius:8px;
+    margin-bottom:20px;
+}
+
+.slider img,
+.dgda-slider img,
+.dgi-slider img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+    position:absolute;
+    top:0;
+    left:0;
+    opacity:0;
+    transition:opacity 1s ease-in-out;
+}
+
+.slider img.active,
+.dgda-slider img.active,
+.dgi-slider img.active{
+    opacity:1;
+}
+
+/* MESSAGE D'ACCUEIL */
+.welcome{
+    margin-bottom:30px;
+}
+
+.welcome h2{
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.welcome p{
+    font-size:17px;
+    margin-bottom:10px;
+}
+
+/* BOUTONS */
+.join-btn{
+    display:block;
+    margin:20px auto 0 auto;
+    padding:13px 26px;
+    background:#0a3d62;
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:6px;
+    transition:background 0.3s;
+    text-align:center;
+    font-size:16px;
+}
+
+.join-btn:hover{
+    background:#08304d;
+}
+
+/* PARTENAIRES */
+.partners{
+    width:100%;
+    max-width:900px;
+    margin-top:30px;
+    text-align:left;
+}
+
+.partners h3{
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+.partner-item{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+    margin-bottom:40px;
+}
+
+.partner-item img.logo{
+    width:60px;
+    height:60px;
+    object-fit:contain;
+}
+
+.partner-item p{
+    font-size:17px;
+}
+
+/* IMAGES */
+.partner-single-img{
+    width:100%;
+    max-width:800px;
+    height:auto;
+    object-fit:cover;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+/* VIDEOS */
+.video-yali{
+    width:100%;
+    max-width:800px;
+    height:150px;
+    border-radius:8px;
+    overflow:hidden;
+    margin-bottom:10px;
+}
+
+/* FOOTER */
+footer{
+    background:#0a3d62;
+    color:#fff;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:15px 20px;
+    font-size:15px;
+}
+
+footer .social{
+    margin-bottom:10px;
+}
+
+footer .social a{
+    margin:0 8px;
+    font-size:20px;
+    color:#fff;
+    text-decoration:none;
+}
+
+footer .social a:hover{
+    color:#dcefff;
+}
+
+footer .footer-text{
+    text-align:center;
+    font-size:15px;
+}
+</style>
+</head>  <body>  <header>  
+    <div class="logo-zone">  
+        <img src="logo.png" alt="Logo BMJ_SERVICE">  
+        <span>BMJ_SERVICE</span>
+    </div>   <div class="menu" id="menuBtn">☰</div>  
+
+    <nav class="nav" id="navMenu">  
+        <a href="index.html">Accueil</a>  
+        <a href="inscription.html">Inscription</a>  
+        <a href="connexion.html">Connexion</a>  
+        <a href="apropos.html">À propos de nous</a>  
+        <a href="contact.html">Contact</a>  
+        <a href="bibliotheque.html">Bibliothèque</a>
+        <a href="#" id="checkUpdateMenu">Vérifier la mise à jour</a>
+        <p id="updateMessageMenu"></p>
+    </nav>
+</header>  <main>  
+    <!-- SLIDER PRINCIPAL -->  
+    <div class="slider" id="slider">  
+        <img src="image1.jpg" class="active" alt="Image 1">  
+        <img src="image2.jpg" alt="Image 2">  
+        <img src="image3.jpg" alt="Image 3">  
+    </div>  <!-- MESSAGE D'ACCUEIL -->  
+<div class="welcome">  
+    <h2>BMJ_SERVICE !</h2>  
+    <p>Chers jeunes entrepreneurs, vous êtes au bon endroit pour transformer vos idées en succès concrets !</p>  
+    <p>BMJ_SERVICE est une plateforme pensée pour vous : accédez à des outils performants, des ressources uniques et une communauté active prête à vous soutenir dans chaque étape de vos projets.</p>  
+    <p>Rejoignez-nous dès maintenant et donnez vie à vos idées avec l’accompagnement et l’expertise que vous méritez !</p>  
+    <a href="inscription.html" class="join-btn">Je veux devenir membre</a>  
+</div>  
+
+<!-- PARTENAIRES -->  
+<div class="partners">  
+    <h3>Nos partenaires</h3>  
+
+    <!-- YALI NETWORK -->  
+    <div class="partner-item">  
+        <img src="yali.png" alt="YALI Network" class="logo">  
+        <p><strong>YALI Network :</strong> BMJ_SERVICE est fier de collaborer avec YALI Network, une communauté de leaders et d’entrepreneurs visionnaires à travers l’Afrique. Ensemble, nous offrons aux jeunes entrepreneurs un accès à des programmes de formation, des ateliers interactifs, du mentorat personnalisé et des opportunités de réseautage uniques. Cette collaboration vise à stimuler l’innovation et créer un écosystème où chaque idée ambitieuse peut se transformer en succès concret.</p>  
+
+        <div class="video-yali">  
+            <video autoplay muted loop playsinline>  
+                <source src="yali_promo.mp4" type="video/mp4">  
+                Votre navigateur ne supporte pas la lecture de vidéos.  
+            </video>  
+        </div>  
+
+        <a href="https://www.yali.org" target="_blank" class="join-btn">Découvrir plus</a>  
+    </div>  
+
+    <!-- DGDA -->  
+ <div class="partner-item">  
+        <img src="dgda.png" alt="DGDA" class="logo">  
+        <p><strong>DGDA :</strong> BMJ_SERVICE collabore avec la Direction Générale des Douanes et Accises (DGDA) pour offrir aux entrepreneurs un accompagnement concret sur les aspects légaux et fiscaux de leurs activités. Nos membres bénéficient de formations sur la réglementation douanière, conseils sur les procédures d’import/export et outils pour la conformité de leurs entreprises.</p>  
+
+        <!-- SLIDER DGDA -->  
+        <div class="dgda-slider" id="dgdaSlider">  
+            <img src="dgda1.jpg" class="active" alt="DGDA 1">  
+            <img src="dgda2.jpg" alt="DGDA 2">  
+        </div>  
+
+        <p>Grâce à ce partenariat stratégique, BMJ_SERVICE permet aux jeunes entrepreneurs de mieux comprendre les règles douanières, de sécuriser leurs opérations commerciales et d’assurer la conformité de leurs activités sur le plan national et international. Cette collaboration renforce la confiance et la transparence pour un entrepreneuriat solide et durable.</p>  
+
+        <a href="https://www.dgda.cd" target="_blank" class="join-btn">Découvrir plus</a>  
+    </div>  
+
+    <!-- MINISTRE DE FORMATION -->  
+    <div>
+        <p><strong>Ministre de Formation :</strong> BMJ_SERVICE s'associe avec le Ministère de la Formation pour offrir aux jeunes entrepreneurs un soutien complet dans le développement de leurs compétences professionnelles et entrepreneuriales. Grâce à ce partenariat, vous aurez accès à des programmes éducatifs, des ateliers pratiques, du mentorat et des ressources uniques pour renforcer votre expertise.</p>  
+
+        <img src="min1.png" alt="Ministre de Formation" class="partner-single-img">  
+
+        <p>Nous croyons que chaque jeune entrepreneur mérite des outils fiables, une guidance adaptée et des opportunités pour réussir. Cette collaboration vous ouvre les portes de la connaissance, vous aide à construire votre réseau et vous accompagne pour transformer vos idées en projets concrets.</p>  
+
+        <p>Rejoignez ce programme exclusif pour bénéficier d’un encadrement professionnel, de conseils pratiques et d’un accompagnement sur mesure pour faire évoluer vos projets et atteindre vos objectifs entrepreneuriaux.</p>  
+
+        <a href="https://www.formation.cd" target="_blank" class="join-btn">Découvrir plus</a>  
+    </div>
+
+<!-- DGI -->  <div class="partner-item">  
+    <img src="dgi.png" alt="DGI" class="logo">  
+    <p><strong>DGI :</strong> BMJ_SERVICE collabore avec la Direction Générale des Impôts (DGI) pour accompagner les jeunes entrepreneurs dans la gestion fiscale et financière de leurs projets. Ce partenariat permet de fournir des formations complètes sur la fiscalité, des conseils pour optimiser les impôts, et des outils pratiques pour garantir la conformité légale. L’objectif est de créer un environnement où chaque jeune entrepreneur peut prospérer en toute confiance.</p>  <!-- IMAGE UNIQUE DGI DIMINUÉE -->  
+<img src="dgi1.jpg" alt="DGI" class="partner-single-img" style="max-width:600px; height:auto; margin:10px 0; border-radius:8px;">  
+
+<!-- TEXTE LONG EN BAS DE L'IMAGE -->  
+<p>Avec l’accompagnement de la DGI, nos membres peuvent naviguer dans le monde complexe de la fiscalité avec sérénité. Nous offrons des ressources pour comprendre les obligations légales, des conseils pratiques pour éviter les erreurs coûteuses, et un soutien continu pour développer une entreprise conforme et durable. Ce partenariat est un véritable levier pour que chaque jeune entrepreneur transforme ses idées en succès tout en respectant les réglementations fiscales nationales et internationales.</p>  
+
+<a href="https://www.dgi.cd" target="_blank" class="join-btn">Découvrir plus</a>
+
+</div>  
+
+<!-- DROITS DE L'HOMME -->  
+<div>
+    <p><strong>Droits de l’Homme :</strong> BMJ_SERVICE collabore avec les organisations de défense des Droits de l’Homme pour sensibiliser et accompagner les jeunes entrepreneurs à développer leurs projets dans le respect des droits fondamentaux et de l’éthique. Ce partenariat permet à nos membres d’accéder à des formations sur la gouvernance responsable, la transparence et les bonnes pratiques entrepreneuriales, tout en valorisant un environnement d’affaires respectueux des droits et de la dignité humaine.</p> 
+
+ <div class="video-yali">  
+            <video autoplay muted loop playsinline>  
+                <source src="yali_promo.mp4" type="video/mp4">
+<!-- TEXTE LONG EN BAS DE L'IMAGE -->  
+<p>Grâce à cette collaboration, chaque jeune entrepreneur est guidé pour créer des entreprises éthiques et durables, tout en respectant les normes sociales et les droits humains. BMJ_SERVICE et ses partenaires mettent en avant l’importance de l’intégrité, de la responsabilité et de la transparence pour construire un écosystème entrepreneurial solide et équitable.</p>  
+
+<a href="https://www.un.org/fr/global-issues/human-rights" target="_blank" class="join-btn">Découvrir plus</a>
+
+</div>  
+<!-- INSTITUTIONS FINANCIÈRES DE LA RDC -->
+<div class="partner-item">
+    <img src="insti.png" alt="Institutions financières RDC" class="logo">
+    <p><strong>Institutions financières de la RDC :</strong> BMJ_SERVICE collabore avec les principales institutions financières de la République Démocratique du Congo pour offrir aux jeunes entrepreneurs un accès à des services financiers fiables, des conseils bancaires et des solutions de financement adaptées aux besoins de leurs projets. Cette collaboration vise à faciliter l’inclusion financière et à soutenir le développement économique local.</p>
+
+    <img src="insti1.jpg" alt="Institutions financières RDC" class="partner-single-img">
+
+    <p>Grâce à ce partenariat, nos membres peuvent accéder à des comptes bancaires professionnels, des prêts adaptés aux startups, des formations sur la gestion financière et des outils pour optimiser la rentabilité de leurs projets. BMJ_SERVICE s’assure que chaque jeune entrepreneur bénéficie d’un accompagnement financier solide et sécurisé.</p>
+
+    <a href="https://www.banque-rdc.cd" target="_blank" class="join-btn">Découvrir plus</a>
+</div>
+
+<!-- OBJECTIFS DE BMJ_SERVICE -->  
+<div class="partner-item" style="text-align:left; margin-bottom:50px;">  <p><strong>Nos objectifs :</strong> Chez BMJ_SERVICE, notre mission est de transformer l’ambition des jeunes entrepreneurs en succès concret et durable. Nous croyons fermement que chaque idée innovante mérite un accompagnement complet pour devenir un projet rentable et impactant. Notre plateforme a été conçue pour fournir des outils pratiques, des formations spécialisées et un réseau de partenaires fiables afin d’aider chaque membre à atteindre ses objectifs professionnels.</p>  
+ <img src="bmj.jpg" alt="propietaires de BMJ_SERVICE" class="partner-single-img">  
+<p>BMJ_SERVICE vise à créer un écosystème où les jeunes peuvent apprendre, se connecter et se développer. Nous mettons l’accent sur l’éducation entrepreneuriale, la compréhension des aspects fiscaux et juridiques, ainsi que sur l’accès à des mentors et experts qui partagent leurs expériences et conseils précieux. </p>  
+
+
+<p>Nos objectifs ne se limitent pas à la réussite individuelle. Nous voulons créer une communauté d’entrepreneurs solidaires, capables de collaborer, d’innover et de contribuer positivement à l’économie et à la société. Chaque projet accompagné par BMJ_SERVICE bénéficie d’un soutien concret pour assurer la croissance, la durabilité et l’impact social.</p>
+
+BMJ_SERVICE c'est une plateforme où vos idées sont valorisées, vos compétences renforcées et vos projets guidés vers le succès. Nous nous engageons à fournir toutes les ressources nécessaires pour que chaque jeune entrepreneur devienne un leader inspirant et performant dans son domaine. </p>  
+    <a href="inscription.html" class="join-btn">Je veux devenir membre</a>  
+</div>  
+<!-- CONFÉRENCE / SONDAGE À MOKAMBO -->
+<div class="partners" style="margin-top:50px; text-align:left;">
+    <h3>LES NOUVELLES DE BMJ_SERVICE </h3>
+    
+    <div class="partner-item" style="padding:20px; background:#f9f9f9; border-radius:8px;">
+        <p>
+        Chers jeunes entrepreneurs, BMJ_SERVICE organise une <strong>conférence de sondage</strong> à <strong>Mokambo</strong> pour recueillir vos idées, besoins et suggestions. Venez partager vos expériences et participer à la création d’un écosystème entrepreneurial solide dans votre région !</p>
+        
+        <p>Cette conférence est une opportunité unique de rencontrer d’autres jeunes, des mentors et des partenaires stratégiques qui peuvent booster vos projets.</p>
+        
+        <!-- IMAGE AU MILIEU -->
+        <img src="conf.jpg" alt="Conférence à Mokambo" class="partner-single-img">
+        
+        <p>Nous vous attendons nombreux pour cette journée d’échanges et de découvertes. Vos contributions sont précieuses pour améliorer nos programmes et services. Ne ratez pas cette occasion de faire entendre votre voix et d’apprendre des meilleurs experts !</p>
+        
+        <!-- BOUTON PARTICIPER -->
+        <a href="sondage.html" class="join-btn">Tu veux participer ? clique ici</a>
+    </div>
+</div>
+    </div>  
+ 
+
+   </main>  <!-- FOOTER -->  <footer> 
+    <div class="social">  
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>  
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>  
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>  
+        <a href="https://wa.me/0993585711" target="_blank"><i class="fab fa-whatsapp"></i></a>  
+        <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>  
+        <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>  
+    </div>  
+    
+<div class="footer-text">  
+        © 2026 BMJ_SERVICE – Tous droits réservés, ADMIN : JUSTIN MUSSIWA
+    </div>  
+       
+</footer>  <script>  
+/* MENU */  
+const menuBtn = document.getElementById("menuBtn");  
+const navMenu = document.getElementById("navMenu");  
+  
+menuBtn.addEventListener("click", function(e){  
+    e.stopPropagation();  
+    navMenu.style.display = navMenu.style.display === "block" ? "none" : "block";  
+});  
+  
+document.addEventListener("click", function(){  
+    navMenu.style.display = "none";  
+});  
+  
+navMenu.addEventListener("click", function(e){  
+    e.stopPropagation();  
+});  
+  
+/* SLIDER PRINCIPAL */  
+const mainSlides = document.querySelectorAll(".slider img");  
+let currentMain = 0;  
+function showMainSlide(index){  
+    mainSlides.forEach((img,i)=>{  
+        img.classList.remove("active");  
+        if(i===index) img.classList.add("active");  
+    });  
+}  
+function nextMainSlide(){  
+    currentMain = (currentMain+1) % mainSlides.length;  
+    showMainSlide(currentMain);  
+}  
+setInterval(nextMainSlide, 5000);  
+  
+/* SLIDER DGDA */  
+const dgdaSlides = document.querySelectorAll(".dgda-slider img");  
+let currentDgda = 0;  
+function showDgdaSlide(index){  
+    dgdaSlides.forEach((img,i)=>{  
+        img.classList.remove("active");  
+        if(i===index) img.classList.add("active");  
+    });  
+}  
+function nextDgdaSlide(){  
+    currentDgda = (currentDgda+1) % dgdaSlides.length;  
+    showDgdaSlide(currentDgda);  
+}  
+setInterval(nextDgdaSlide, 5000);  
+  
+/* SLIDER DGI */  
+const dgiSlides = document.querySelectorAll(".dgi-slider img");  
+let currentDgi = 0;  
+function showDgiSlide(index){  
+    dgiSlides.forEach((img,i)=>{  
+        img.classList.remove("active");  
+        if(i===index) img.classList.add("active");  
+    });  
+}  
+function nextDgiSlide(){  
+    currentDgi = (currentDgi+1) % dgiSlides.length;  
+    showDgiSlide(currentDgi);  
+}  
+setInterval(nextDgiSlide, 5000);  
+</script>  </body>  
+</html>
